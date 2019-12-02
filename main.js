@@ -15,8 +15,7 @@ function drawBackground() {
     context.fillStyle = 'black';
     context.fillRect(0, 0, window.innerWidth, window.innerHeight);
 // water
-    context.fillStyle = 'blue';
-    context.fillRect(water.origin[0],water.origin[1],water.dimensions[0],water.dimensions[1]);
+    water.Draw();
 
     context.fillStyle = 'brown';
     context.fillRect(0, 0, window.innerWidth, window.innerHeight * .1);
@@ -24,9 +23,9 @@ function drawBackground() {
 
 function drawObjects () {
     drawBackground();
+    log.Animate();
     frog.Draw();
     frog.Move();
-
 }
 context.fillStyle = 'green';
 context.fillRect(frog.origin[0],frog.origin[1],frog.dimensions[0],frog.dimensions[1]);
