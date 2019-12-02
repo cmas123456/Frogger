@@ -14,10 +14,10 @@ function drawBackground() {
     context.clearRect(0, 0, window.innerWidth, window.innerHeight);
     context.fillStyle = 'black';
     context.fillRect(0, 0, window.innerWidth, window.innerHeight);
-
+// water
     context.fillStyle = 'blue';
     context.fillRect(water.origin[0],water.origin[1],water.dimensions[0],water.dimensions[1]);
-    
+
     context.fillStyle = 'brown';
     context.fillRect(0, 0, window.innerWidth, window.innerHeight * .1);
   }
