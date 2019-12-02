@@ -3,6 +3,7 @@ let waterCreate = (() => {
     water = {
         origin: [0, window.innerHeight * .10],
         dimensions: [window.innerWidth, window.innerHeight * .40],
+        color: 'blue',
         image: null,
         death: true
     }
