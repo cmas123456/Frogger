@@ -12,13 +12,12 @@ let waterCreate = (() => {
         },
     }
 })();
-
-let log = {};
-let logCreate = (() => {
-    log = {
-        origin: [0, window.innerHeight * .11],
+let wood = {};
+let woodCreate = ((start = 0) => {
+    wood = {
+        origin: [start, window.innerHeight * .11],
         dimensions: [window.innerWidth * .20, window.innerHeight * .03],
-        speed: 5,
+        speed: 2,
         color: 'peru',
         image: null,
         safe: true,
@@ -29,9 +28,8 @@ let logCreate = (() => {
         Animate(){
             this.origin[0] += this.speed;
             this.Draw();
-
             if (this.origin[0] > window.innerWidth){
-                this.origin[0] = -300;
+                this.origin[0] = -this.dimensions[0];
             }
         }
     }

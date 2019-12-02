@@ -23,7 +23,7 @@ function drawBackground() {
 
 function drawObjects () {
     drawBackground();
-    log.Animate();
+    wood.Animate();
     frog.Draw();
     frog.Move();
 }
