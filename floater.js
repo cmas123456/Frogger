@@ -12,11 +12,14 @@ let waterCreate = (() => {
         },
     }
 })();
+const logRow1 = [];
+const logRow2 = [];
+const logRow3 = []; 
 let wood = {};
-let woodCreate = ((start = 0) => {
+let woodCreate = ((start = 0, length = .10) => {
     wood = {
-        origin: [start, window.innerHeight * .11],
-        dimensions: [window.innerWidth * .20, window.innerHeight * .03],
+        origin: [0 + start, window.innerHeight * .11],
+        dimensions: [window.innerWidth * length, window.innerHeight * .03],
         speed: 2,
         color: 'peru',
         image: null,
@@ -34,4 +37,3 @@ let woodCreate = ((start = 0) => {
         }
     }
 })();
-

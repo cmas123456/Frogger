@@ -27,8 +27,8 @@ function drawObjects () {
     frog.Draw();
     frog.Move();
 }
-context.fillStyle = 'green';
-context.fillRect(frog.origin[0],frog.origin[1],frog.dimensions[0],frog.dimensions[1]);
+// context.fillStyle = 'green';
+// context.fillRect(frog.origin[0],frog.origin[1],frog.dimensions[0],frog.dimensions[1]); this is no longer needed
 
 let gameLoop = (() => {
     const gameLoop = setInterval(() => {
