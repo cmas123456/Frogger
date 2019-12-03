@@ -21,12 +21,21 @@ function drawBackground() {
       context.fillStyle = 'peru';
     }
     context.fillRect(0, (window.innerHeight / 12) * i, window.innerWidth, window.innerHeight);
-
   }
+  water.Draw();
 }
 
 function drawObjects () {
     drawBackground();
+    logRow1.forEach(wood =>{
+      wood.Animate();
+    });
+    logRow2.forEach(wood =>{
+      wood.Animate();
+    });
+    logRow3.forEach(wood =>{
+      wood.Animate();
+    });
     frog.Draw();
     frog.Move();
 }
@@ -35,8 +44,4 @@ function gameLoop() {
     window.requestAnimationFrame(gameLoop);
 }
 gameLoop();
-// let gameLoop = (() => {
-//     const gameLoop = setInterval(() => {
-//         drawObjects();
-//     },1000/60)
-//   })()
+
