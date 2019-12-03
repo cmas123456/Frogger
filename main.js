@@ -36,6 +36,12 @@ function drawObjects () {
     logRow3.forEach(wood =>{
       wood.Animate();
     });
+    turtleRow1.forEach(turtle =>{
+      turtle.Animate();
+    });
+    turtleRow2.forEach(turtle =>{
+      turtle.Animate();
+    });
     frog.Draw();
     frog.Move();
 }
