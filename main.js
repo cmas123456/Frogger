@@ -4,23 +4,26 @@ function assignAttributes(element, attributes) {
 }
 assignAttributes(source, {
   id: 'source',
-	height: window.innerHeight - 20,
-	width: window.innerWidth - 50
+	height: window.innerHeight - 30,
+	width: window.innerWidth - 10
 })
 var globalId;
 document.body.appendChild(source)
 const context = source.getContext('2d', {alpha: 'false'})
 
 function drawBackground() {
-    context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    context.fillStyle = 'black';
-    context.fillRect(0, 0, window.innerWidth, window.innerHeight);
-// water
-    water.Draw();
-
-    context.fillStyle = 'brown';
-    context.fillRect(0, 0, window.innerWidth, window.innerHeight * .1);
+  context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  for (let i = 0; i < 12; i++){
+    if ((i % 2) === 0){
+      context.fillStyle = 'black';
+    }
+    else if ((i % 2) !== 0){
+      context.fillStyle = 'peru';
+    }
+    context.fillRect(0, (window.innerHeight / 12) * i, window.innerWidth, window.innerHeight);
   }
+  water.Draw();
+}
 
 function drawObjects () {
     drawBackground();
