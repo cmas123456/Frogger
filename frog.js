@@ -5,12 +5,12 @@ const frogImageRight = document.getElementById('img_frogright');
 let frog = {};
 let frogCreate = (() => {
     frog = {
-        origin: [window.innerWidth / 2, window.innerHeight * (92/100)],
-        dimensions: [40,30],
+        origin: [window.innerWidth / 2, window.innerHeight * .935],
+        dimensions: [window.innerWidth / 40, window.innerHeight / 20],
         color: 'green',
         lives: 5,
         image: null,
-        movementSpeed: window.innerHeight * (7/100) ,
+        movementSpeed: window.innerHeight / 12,
         horizontalSpeed: 0,
         verticalSpeed: 0,
         canHop: true,
@@ -22,14 +22,35 @@ let frogCreate = (() => {
         Move() {
             if (this.hopCounter >= 10){
                 if (this.horizontalSpeed !== 0 || this.verticalSpeed !== 0) {
-                    this.origin[0] += this.horizontalSpeed;
-                    this.origin[1] += this.verticalSpeed;
-                    this.hopCounter = 0;
+                    if (!frog.CheckBorderX()){
+                        this.origin[0] += this.horizontalSpeed;
+                        this.hopCounter = 0;
+                    } 
+                    if (!frog.CheckBorderY()){
+                        this.origin[1] += this.verticalSpeed;
+                        this.hopCounter = 0;
+                    }
                 }
             } else
                 this.hopCounter++;
+            },
+        CheckBorderX() {
+            if (this.origin[0] + this.horizontalSpeed < 0 || this.origin[0] + this.horizontalSpeed > window.innerWidth - 100){
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        CheckBorderY() {
+            if (this.origin[1] + this.verticalSpeed < -10 || this.origin[1] + this.verticalSpeed > window.innerHeight - 25){
+                return true;
+            }
+            else {
+                return false;
             }
         }
+    }
 })();
 let InputHandler = (() => {
     document.addEventListener("keydown", event => {
