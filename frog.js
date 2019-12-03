@@ -10,9 +10,10 @@ let frogCreate = (() => {
         color: 'green',
         lives: 5,
         image: null,
-        movementSpeed: window.innerHeight / 12,
+        movementSpeed: (window.innerHeight / 12),
         horizontalSpeed: 0,
         verticalSpeed: 0,
+        attachedSpeed: 0,
         canHop: true,
         hopCounter: 0,
         image: frogImageUp,
@@ -30,12 +31,22 @@ let frogCreate = (() => {
                         this.origin[1] += this.verticalSpeed;
                         this.hopCounter = 0;
                     }
+                    if (frog.attachedSpeed > 0){
+                        frog.origin[0] += frog.attachedSpeed;
+                    } 
                 }
-            } else
-                this.hopCounter++;
-            },
+            } else {
+                this.hopCounter++; 
+            }
+            if (frog.attachedSpeed > 0) {
+                if (!frog.CheckBorderX()) {
+                    frog.origin[0] += frog.attachedSpeed;
+                    frog.attachedSpeed = 0;
+                } else frog.origin[0] += 0;
+            }    
+        },
         CheckBorderX() {
-            if (this.origin[0] + this.horizontalSpeed < 0 || this.origin[0] + this.horizontalSpeed > window.innerWidth - 100){
+            if (this.origin[0]< 0 || this.origin[0] + this.horizontalSpeed > window.innerWidth - 25){
                 return true;
             }
             else {
@@ -90,3 +101,19 @@ let InputHandler = (() => {
       }
     })
   })();
+// function isOnLog () {
+//       isSafe = true;
+//       let topOfObject = frog.origin[1];
+//       let bottomOfObject = frog.origin[1] + frog.dimensions[1];
+//       let leftSideOfObject = frog.origin[0];
+//       let rightSideOfObject = frog.origin[0] + frog.dimensions[0];
+//       logArray.forEach(row => {
+//           row.forEach(log => {
+//             if ((topOfObject < log.topOfObject) && (bottomOfObject > log.bottomOfObject)) {
+//                 if ((leftSideOfObject > log.leftSideOfObject) && (rightSideOfObject < log.rightSideOfObject)) {
+//                     frog.origin[0] += log.speed;
+//                 }
+//             }
+//           })
+//       })
+// }
