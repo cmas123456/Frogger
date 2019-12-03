@@ -24,7 +24,15 @@ function drawBackground() {
 
 function drawObjects () {
     drawBackground();
-    wood.Animate();
+    logRow1.forEach(wood =>{
+      wood.Animate();
+    });
+    logRow2.forEach(wood =>{
+      wood.Animate();
+    });
+    logRow3.forEach(wood =>{
+      wood.Animate();
+    });
     frog.Draw();
     frog.Move();
 }
@@ -33,8 +41,4 @@ function gameLoop() {
     window.requestAnimationFrame(gameLoop);
 }
 gameLoop();
-// let gameLoop = (() => {
-//     const gameLoop = setInterval(() => {
-//         drawObjects();
-//     },1000/60)
-//   })()
+
