@@ -7,7 +7,6 @@ assignAttributes(source, {
 	height: window.innerHeight - 30,
 	width: window.innerWidth - 10
 })
-var globalId;
 document.body.appendChild(source)
 const context = source.getContext('2d', {alpha: 'false'})
 
@@ -24,6 +23,52 @@ function drawBackground() {
   }
   water.Draw();
 }
+function isOnLog () {
+  let topOfObject = frog.origin[1];
+  let bottomOfObject = frog.origin[1] + frog.dimensions[1];
+  let leftSideOfObject = frog.origin[0];
+  let rightSideOfObject = frog.origin[0] + frog.dimensions[0];
+  logRow1.forEach(log => {
+    let logLeft = log.origin[0];
+    let logRight = log.origin[0] + log.dimensions[0];
+    let logTop = log.origin[1];
+    let logBot = log.origin[1] + log.dimensions[1];
+    if ((topOfObject > logTop) && (bottomOfObject < logBot)) {
+      if ((leftSideOfObject > logLeft) && (rightSideOfObject < logRight)) {
+        if (!frog.CheckBorderX()) {
+          frog.attachedSpeed += log.speed;
+        }
+      }
+    }
+  })
+  logRow2.forEach(log => {
+    let logLeft = log.origin[0];
+    let logRight = log.origin[0] + log.dimensions[0];
+    let logTop = log.origin[1];
+    let logBot = log.origin[1] + log.dimensions[1];
+    if ((topOfObject > logTop) && (bottomOfObject < logBot)) {
+      if ((leftSideOfObject > logLeft) && (rightSideOfObject < logRight)) {
+        if (!frog.CheckBorderX()) {
+          frog.attachedSpeed += log.speed;
+        }
+      }
+    }
+  })
+  logRow3.forEach(log => {
+    let logLeft = log.origin[0];
+    let logRight = log.origin[0] + log.dimensions[0];
+    let logTop = log.origin[1];
+    let logBot = log.origin[1] + log.dimensions[1];
+    if ((topOfObject > logTop) && (bottomOfObject < logBot)) {
+      if ((leftSideOfObject > logLeft) && (rightSideOfObject < logRight)) {
+        if (!frog.CheckBorderX()) {
+          frog.attachedSpeed += log.speed;
+        }
+      }
+    }
+  })
+}
+
 
 function drawObjects () {
     drawBackground();
@@ -41,7 +86,7 @@ function drawObjects () {
 }
 function gameLoop() {
     drawObjects();
+    isOnLog();
     window.requestAnimationFrame(gameLoop);
 }
 gameLoop();
-
