@@ -55,10 +55,10 @@ logRow3.push(new wood(0,row3, .15,row3Speed),new wood(.25,row3 ,.20,row3Speed),n
         context.fillRect(this.origin[0],this.origin[1],this.dimensions[0],this.dimensions[1]);
     }
     Animate(){
-        this.origin[0] += this.speed;
+        this.origin[0] -= this.speed;
         this.Draw();
-        if (this.origin[0] > window.innerWidth){
-            this.origin[0] = -this.dimensions[0];
+        if (this.origin[0] < 0 - this.dimensions[0]){
+            this.origin[0] = window.innerWidth;
         }
     }
 };
