@@ -30,9 +30,7 @@ function drawObjects () {
     logRow1.forEach(wood =>{
       wood.Animate();
     });
-    logRow2.forEach(wood =>{
-      wood.Animate();
-    });
+    logRow2.forEach(wood =>{wood.Animate();});
     logRow3.forEach(wood =>{
       wood.Animate();
     });
