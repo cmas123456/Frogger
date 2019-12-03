@@ -12,9 +12,6 @@ let waterCreate = (() => {
         },
     }
 })();
-const logRow1 = [];
-const logRow2 = [];
-const logRow3 = []; 
 let wood = {};
 let woodCreate = ((start = 0, length = .10) => {
     wood = {
@@ -37,3 +34,18 @@ let woodCreate = ((start = 0, length = .10) => {
         }
     }
 })();
+// let logRow = ((rowNum) =>{
+//     switch(rowNum){
+//         case 1:
+//             wood.woodCreate(window.innerWidth *.5, .2).Animate();
+//             break;
+//         case 2: 
+//             // make log in row 2two
+//             break;
+//         case 3:
+//             //make log in row three
+//             break;
+//         default:
+//             console.log("You done f... messed up log generation.")
+//     }
+// })();

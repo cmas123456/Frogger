@@ -7,6 +7,7 @@ assignAttributes(source, {
 	height: window.innerHeight - 20,
 	width: window.innerWidth - 50
 })
+var globalId;
 document.body.appendChild(source)
 const context = source.getContext('2d', {alpha: 'false'})
 
@@ -27,11 +28,13 @@ function drawObjects () {
     frog.Draw();
     frog.Move();
 }
-// context.fillStyle = 'green';
-// context.fillRect(frog.origin[0],frog.origin[1],frog.dimensions[0],frog.dimensions[1]); this is no longer needed
-
-let gameLoop = (() => {
-    const gameLoop = setInterval(() => {
-        drawObjects();
-    },1000/60)
-  })()
+function gameLoop() {
+    drawObjects();
+    window.requestAnimationFrame(gameLoop);
+}
+gameLoop();
+// let gameLoop = (() => {
+//     const gameLoop = setInterval(() => {
+//         drawObjects();
+//     },1000/60)
+//   })()
