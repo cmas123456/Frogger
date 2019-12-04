@@ -38,7 +38,6 @@ class wood {
             this.origin[0] = -this.dimensions[0];
         }
     }
-
 };
 let logRow1 = []; row1 = 1/12; row1Speed = 4;
 let logRow2 = []; row2 = 2/12;
@@ -46,7 +45,6 @@ let logRow3 = []; row3 = 4/12; row3Speed = 3;
 logRow1.push(new wood(0,row1,.1,4),new wood(.25,row1 ,.3,4),new wood(.75, row1, .15,4));
 logRow2.push(new wood(0,row2,.50),new wood(.75,row2 ,.1));//,new wood(.75, row2, .15));
 logRow3.push(new wood(0,row3, .15,row3Speed),new wood(.25,row3 ,.20,row3Speed),new wood(.65, row3, .20,row3Speed),new wood(.90, row3, .10,row3Speed));
- //turtles
 class turtle{
     constructor(startX = 0, startY = 1/12, turtPop = 2, speed = 2, diverTurt = false){
         this.origin = [window.innerWidth * startX, window.innerHeight * startY + (window.innerHeight*1/24)],
