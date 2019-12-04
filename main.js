@@ -1,16 +1,16 @@
-const source = document.createElement('canvas')
+const source = document.createElement('canvas') //creates the canvas
 function assignAttributes(element, attributes) {
 	Object.keys(attributes).forEach(key => element.setAttribute(key, attributes[key]))
 }
-assignAttributes(source, {
+assignAttributes(source, { // this makes the canvas fit in the window
   id: 'source',
-	height: window.innerHeight - 30,
+	height: window.innerHeight - 20,
 	width: window.innerWidth - 10
 })
-document.body.appendChild(source)
+document.body.appendChild(source) // adds the canvas to the webpage
 const context = source.getContext('2d', {alpha: 'false'})
 
-function drawBackground() {
+function drawBackground() {// draws the background on the canvas
   context.clearRect(0, 0, window.innerWidth, window.innerHeight);
   for (let i = 0; i < 12; i++){
     if ((i % 2) === 0){
@@ -21,7 +21,7 @@ function drawBackground() {
     }
     context.fillRect(0, (window.innerHeight / 12) * i, window.innerWidth, window.innerHeight);
   }
-  water.Draw();
+  water.Draw();// only background that should make it to the game unless the above is converted to road
 }
 function isOnLog () {
   let topOfObject = frog.origin[1];
@@ -119,19 +119,15 @@ function isOnTurtle() {
 function drawObjects () {
     drawBackground();
     logRow1.forEach(wood =>{
-      wood.Animate();
-    });
+      wood.Animate();});
     logRow2.forEach(wood =>{
       wood.Animate();});
     logRow3.forEach(wood =>{
-      wood.Animate();
-    });
+      wood.Animate();});
     turtleRow1.forEach(turtle =>{
-      turtle.Animate();
-    });
+      turtle.Animate();});
     turtleRow2.forEach(turtle =>{
-      turtle.Animate();
-    });
+      turtle.Animate();});
     frog.Draw();
     frog.Move();
 }
