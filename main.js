@@ -85,6 +85,11 @@ function isOnTurtle() {
             frog.attachedSpeed -= turtle.speed;
           }
         }
+        if (!turtle.safe){
+          frog.lives--;
+          frog.origin[0] = window.innerWidth / 2;
+          frog.origin[1] = window.innerHeight * .935;
+        }
       }
     }
   })
@@ -100,6 +105,11 @@ function isOnTurtle() {
             frog.attachedSpeed -= turtle.speed;
           }
         }
+        if (!turtle.safe){
+          frog.lives--;
+          frog.origin[0] = window.innerWidth / 2;
+          frog.origin[1] = window.innerHeight * .935;
+        }
       }
     }
   })
@@ -111,7 +121,8 @@ function drawObjects () {
     logRow1.forEach(wood =>{
       wood.Animate();
     });
-    logRow2.forEach(wood =>{wood.Animate();});
+    logRow2.forEach(wood =>{
+      wood.Animate();});
     logRow3.forEach(wood =>{
       wood.Animate();
     });
@@ -126,6 +137,7 @@ function drawObjects () {
 }
 function gameLoop() {
     drawObjects();
+    goZoom();
     isOnLog();
     isOnTurtle();
     window.requestAnimationFrame(gameLoop);
