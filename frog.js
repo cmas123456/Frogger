@@ -38,7 +38,7 @@ let frogCreate = (() => {
             } else {
                 this.hopCounter++; 
             }
-            if (frog.attachedSpeed > 0) {
+            if (frog.attachedSpeed !== 0) {
                 if (!frog.CheckBorderX()) {
                     frog.origin[0] += frog.attachedSpeed;
                     frog.attachedSpeed = 0;
