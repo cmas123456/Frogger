@@ -85,9 +85,7 @@ class turtle{
         this.counter += this.diveSpeed;
         if( this.counter < 200){
             this.color = 'olive';
-            if(this.counter < 0){
-                this.diveSpeed = 1;
-            }
+            if(this.counter < 0){this.diveSpeed = 1;}
         } else if(this.counter === 200){
             this.color = 'rgba(128,128,0, .75)'; 
             //console.log(`${this.safe}, ${this.color}: turtle stage 1`)
@@ -100,9 +98,7 @@ class turtle{
             //console.log(`${this.safe}, ${this.color}: turtle stage 3`)
         } else if(this.counter === 800){
             this.color = 'rgba(128,128,0, 0)';
-            if(this.diveSpeed > 0){
-                this.safe = false;
-            } 
+            this.safe = false;
             //console.log(`${this.safe}, ${this.color}: turtle stage 4`)
         }else if(this.counter === 900){
             this.diveSpeed =-2;
@@ -118,4 +114,3 @@ let turtleRow1 = []; row1 = 3/12; row1Speed = 2;
 let turtleRow2 = []; row2 = 5/12;
 turtleRow1.push(new turtle(0,row1,2,3),new turtle(.20,row1,3,3),new turtle(.70, row1,3,3));
 turtleRow2.push(new turtle(0,row2,3),new turtle(.5,row2),new turtle(.80,row2,3));
- //turtles
