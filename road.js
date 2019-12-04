@@ -38,9 +38,9 @@
   let car11 = new Car(-150, 150, 20, 30, 'yellow', 3)
   let car12 = new Car(-100,150, 20, 30, 'yellow', 3)
    ///hov cars
-  let car13 = new Car(-9, 200, 20, 50, 'orange', -5)
-  let car14 = new Car(-150, 200, 20, 50, 'orange', -5)
-  let car15 = new Car(-300, 200, 20, 80, 'orange', -5)
+  let car13 = new Car(50, 200, 20, 50, 'orange', -5)
+  let car14 = new Car(200, 200, 20, 50, 'orange', -5)
+  let car15 = new Car(300, 200, 20, 80, 'orange', -5)
   
   let lane1 = [car1, car2, car3]
   let lane2 = [car4, car5, car6]
