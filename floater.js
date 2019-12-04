@@ -93,7 +93,7 @@ class turtle{
             //console.log(`${this.safe}, ${this.color}: turtle stage 1`)
         } else if(this.counter === 400){
             this.color = 'rgba(128,128,0, .50)';
-            console.log(`${this.safe}, ${this.color}: turtle stage 2`)
+            //console.log(`${this.safe}, ${this.color}: turtle stage 2`)
         } else if(this.counter === 600){
             this.color = 'rgba(128,128,0, .25)';
             this.safe = true;
