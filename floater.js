@@ -55,7 +55,8 @@ class turtle{
         this.turtPop = turtPop, 
         this.image = null,
         this.safe = true,
-        this.counter = 0
+        this.counter = 0,
+        this.diveSpeed = 1
     }
     Draw() {
         let offset = 0;
@@ -80,27 +81,31 @@ class turtle{
     }
     Animate(){
         this.origin[0] -= this.speed;
-        this.counter += 1;
-        //console.log(this.counter);
-        //console.log(this.origin);
-        if(this.counter === 200){
+        this.counter += this.diveSpeed;
+        if( this.counter < 200){
+            this.color = 'olive';
+            if(this.counter < 0){
+                this.diveSpeed = 1;
+            }
+        } else if(this.counter === 200){
             this.color = 'rgba(128,128,0, .75)'; 
-            console.log(`${this.safe}, ${this.color}: turtle stage 1`)
+            //console.log(`${this.safe}, ${this.color}: turtle stage 1`)
         } else if(this.counter === 400){
             this.color = 'rgba(128,128,0, .50)';
             console.log(`${this.safe}, ${this.color}: turtle stage 2`)
         } else if(this.counter === 600){
-            this.color === 'rgba(128,128,0, .25)';
-            console.log(`${this.safe}, ${this.color}: turtle stage 3`)
+            this.color = 'rgba(128,128,0, .25)';
+            this.safe = true;
+            //console.log(`${this.safe}, ${this.color}: turtle stage 3`)
         } else if(this.counter === 800){
             this.color = 'rgba(128,128,0, 0)';
-            this.safe = false;
-            console.log(`${this.safe}, ${this.color}: turtle stage 4`)
-        }else if(this.counter === 1000){
-            this.safe = true;
-            this.color = 'olive';
-            this.counter = 0;
-            console.log(`${this.safe}, ${this.color}: turtle stage 5`)
+            if(this.diveSpeed > 0){
+                this.safe = false;
+            } 
+            //console.log(`${this.safe}, ${this.color}: turtle stage 4`)
+        }else if(this.counter === 900){
+            this.diveSpeed =-2;
+            //console.log(`${this.safe}, ${this.color}: turtle stage 5`)
         }
         this.Draw();
         if (this.origin[0] < 0 - (2 * this.radius * 3)){
