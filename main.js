@@ -68,6 +68,42 @@ function isOnLog () {
     }
   })
 }
+function isOnTurtle() {
+  let topOfObject = frog.origin[1];
+  let bottomOfObject = frog.origin[1] + frog.dimensions[1];
+  let leftSideOfObject = frog.origin[0];
+  let rightSideOfObject = frog.origin[0] + frog.dimensions[0];
+  turtleRow1.forEach(turtle => {
+    let turtleLeft = (turtle.origin[0] - turtle.radius);
+    let turtleRight = (turtle.origin[0] - turtle.radius) + (turtle.radius * turtle.turtPop * 2);
+    let turtleTop = (turtle.origin[1] - turtle.radius);
+    let turtleBot = (turtle.origin[1] + turtle.radius);
+    if ((topOfObject > turtleTop) && (bottomOfObject < turtleBot)) {
+      if ((leftSideOfObject > turtleLeft) && (rightSideOfObject < turtleRight)) {
+        if (turtle.safe){
+          if (!frog.CheckBorderX()) {
+            frog.attachedSpeed -= turtle.speed;
+          }
+        }
+      }
+    }
+  })
+  turtleRow2.forEach(turtle => {
+    let turtleLeft = (turtle.origin[0] - turtle.radius);
+    let turtleRight = (turtle.origin[0] - turtle.radius) + (turtle.radius * turtle.turtPop * 2);
+    let turtleTop = turtle.origin[1] - turtle.radius;
+    let turtleBot = turtle.origin[1] + turtle.radius;
+    if ((topOfObject > turtleTop) && (bottomOfObject < turtleBot)) {
+      if ((leftSideOfObject > turtleLeft) && (rightSideOfObject < turtleRight)) {
+        if (turtle.safe){
+          if (!frog.CheckBorderX()) {
+            frog.attachedSpeed -= turtle.speed;
+          }
+        }
+      }
+    }
+  })
+}
 
 
 function drawObjects () {
@@ -91,6 +127,7 @@ function drawObjects () {
 function gameLoop() {
     drawObjects();
     isOnLog();
+    isOnTurtle();
     window.requestAnimationFrame(gameLoop);
 }
 gameLoop();
