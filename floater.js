@@ -54,7 +54,8 @@ class turtle{
         this.color = 'olive',
         this.turtPop = turtPop, 
         this.image = null,
-        this.safe = true
+        this.safe = true,
+        this.counter = 0
     }
     Draw() {
         let offset = 0;
@@ -79,15 +80,36 @@ class turtle{
     }
     Animate(){
         this.origin[0] -= this.speed;
+        this.counter += 1;
+        //console.log(this.counter);
+        //console.log(this.origin);
+        if(this.counter === 200){
+            this.color = 'rgba(128,128,0, .75)'; 
+            console.log(`${this.safe}, ${this.color}: turtle stage 1`)
+        } else if(this.counter === 400){
+            this.color = 'rgba(128,128,0, .50)';
+            console.log(`${this.safe}, ${this.color}: turtle stage 2`)
+        } else if(this.counter === 600){
+            this.color === 'rgba(128,128,0, .25)';
+            console.log(`${this.safe}, ${this.color}: turtle stage 3`)
+        } else if(this.counter === 800){
+            this.color = 'rgba(128,128,0, 0)';
+            this.safe = false;
+            console.log(`${this.safe}, ${this.color}: turtle stage 4`)
+        }else if(this.counter === 1000){
+            this.safe = true;
+            this.color = 'olive';
+            this.counter = 0;
+            console.log(`${this.safe}, ${this.color}: turtle stage 5`)
+        }
         this.Draw();
-        if (this.origin[0] < 0 - this.radius){
+        if (this.origin[0] < 0 - (2 * this.radius * 3)){
             this.origin[0] = window.innerWidth + this.radius;
         }
     }
 };
 let turtleRow1 = []; row1 = 3/12; row1Speed = 2;
 let turtleRow2 = []; row2 = 5/12;
-turtleRow1.push(new turtle(0,row1,2,3),new turtle(.20,row1,3,3),new turtle(.75, row1,2,3));
+turtleRow1.push(new turtle(0,row1,2,3),new turtle(.20,row1,3,3),new turtle(.70, row1,3,3));
 turtleRow2.push(new turtle(0,row2,3),new turtle(.5,row2),new turtle(.80,row2,3));
-logs.push(logRow1.logRow2,logRow3);
- //turtles
+
