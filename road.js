@@ -1,38 +1,38 @@
-  function Car(x, y, w, h, color, speed){
-    this.x = x
-    this.y = y
-    this.h = h
-    this.w = w
+  function Car(x, y, h, w, color, speed){
+    this.x = (window.innerWidth / 2) * x
+    this.y = (window.innerHeight * .935) * y
+    this.w = (window.innerWidth / 40) * w
+    this.h = (window.innerHeight / 20) * h
     this.color = color
     this.speed = speed
     
     this.renderCar = function(){
       context.fillStyle = this.color
       context.fillRect(this.x, this.y, this.h, this.w)
-    }
-    
+    } 
   }
   ////Lane1 Cars
-  let car1 = new Car(70, 0, 20, 30, 'red', -1)
-  let car2 = new Car(750, 0, 20, 30, 'red', -1)
-  let car3 = new Car(800,0, 20, 30, 'red', -1)
+
+  let car1 = new Car(1, 1, 1, 1, 'red', -1)
+  let car2 = new Car(1.5, 1, 2, 1, 'red', -1)
+  let car3 = new Car(2, 1, 1, 1, 'red', -1)
   ///lane2 Cars
-  let car4 = new Car(0, 50, 20, 30, 'blue', 2)
-  let car5 = new Car(-60, 50, 20, 30, 'blue', 2)
-  let car6 = new Car(-150, 50, 20, 30, 'blue', 2)
+  let car4 = new Car(1, .95, 1, 1, 'blue', 2)
+  let car5 = new Car(1.5, .95, 1, 1, 'blue', 2)
+  let car6 = new Car(2, .95, 1, 1, 'blue', 2)
   ///lane3 cars
-  let car7 = new Car(50, 100, 20, 30, 'green', -2)
-  let car8 = new Car(100, 100, 20, 30, 'green', -2)
-  let car9 = new Car(200,100, 20, 30, 'green', -2)
-  let abc779 = new Car(550,100, 20, 30, 'green', -2)
+  let car7 = new Car(1, .9, 1, 1, 'green', -2)
+  let car8 = new Car(1.5, .9, 2, 1, 'green', -2)
+  let car9 = new Car(2, .9, 3, 1, 'green', -2)
+  let abc779 = new Car(2.5, .9, 3, 1, 'green', -2)
    ///lane4 cars
-  let car10 = new Car(-9, 150, 20, 30, 'yellow',3)
-  let car11 = new Car(-150, 150, 20, 30, 'yellow', 3)
-  let car12 = new Car(-100,150, 20, 30, 'yellow', 3)
+  let car10 = new Car(1, .85, 1, 1, 'yellow',3)
+  let car11 = new Car(1.5, .85, 3, 1, 'yellow', 3)
+  let car12 = new Car(2, .85, 1, 1, 'yellow', 3)
    ///hov cars
-  let car13 = new Car(50, 200, 20, 50, 'orange', -5)
-  let car14 = new Car(200, 200, 20, 50, 'orange', -5)
-  let car15 = new Car(300, 200, 20, 80, 'orange', -5)
+  let car13 = new Car(1, .8, 1, 1, 'orange', -5)
+  let car14 = new Car(1.5, .8, 1, 1, 'orange', -5)
+  let car15 = new Car(3, .8, 5, 1, 'orange', -5)
   
   let lane1 = [car1, car2, car3]
   let lane2 = [car4, car5, car6]
@@ -46,7 +46,7 @@
     road.forEach(lane => 
       lane.forEach(car => {
       if(car.speed < 1){
-          if(car.x > -25)//800 is the end point
+          if(car.x > -300)//800 is the end point
          {car.x += car.speed}//1 is the speed
       else{
         
