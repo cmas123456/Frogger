@@ -68,6 +68,38 @@ function isOnLog () {
     }
   })
 }
+function goSplat() {
+  let topOfObject = frog.origin[1];
+  let bottomOfObject = frog.origin[1] + frog.dimensions[1];
+  let leftSideOfObject = frog.origin[0];
+  let rightSideOfObject = frog.origin[0] + frog.dimensions[0];
+  road.forEach(lane => {
+    lane.forEach(car => {
+      let carLeft = car.x;
+      let carRight = car.x + car.w;
+      let carAxis = car.y;
+      if (carAxis === topOfObject){
+        if (leftSideOfObject >= carLeft && leftSideOfObject <= carRight){
+          frog.lives--;
+          frog.origin[0] = window.innerWidth / 2;
+          frog.origin[1] = window.innerHeight * .935;
+        }
+        else if(rightSideOfObject <= carLeft && rightSideOfObject >= carRight){
+          frog.lives--;
+          frog.origin[0] = window.innerWidth / 2;
+          frog.origin[1] = window.innerHeight * .935;
+        }
+      }
+      // if ((topOfObject > carAxis) && (bottomOfObject < carDown)) {
+      //   if ((leftSideOfObject > carLeft) || (rightSideOfObject < carRight)) {
+      //     frog.lives--;
+      //     frog.origin[0] = window.innerWidth / 2;
+      //     frog.origin[1] = window.innerHeight * .935;
+      //   }
+      // }
+    })
+  })
+}
 function isOnTurtle() {
   let topOfObject = frog.origin[1];
   let bottomOfObject = frog.origin[1] + frog.dimensions[1];
@@ -134,6 +166,7 @@ function drawObjects () {
 function gameLoop() {
     drawObjects();
     goZoom();
+    goSplat();
     isOnLog();
     isOnTurtle();
     window.requestAnimationFrame(gameLoop);

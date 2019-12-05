@@ -1,6 +1,6 @@
   function Car(x, y, h, w, color, speed){
     this.x = (window.innerWidth / 2) * x
-    this.y = (window.innerHeight * .935) * y
+    this.y = (window.innerHeight * .935) - ((window.innerHeight / 12) * y)
     this.w = (window.innerWidth / 40) * w
     this.h = (window.innerHeight / 20) * h
     this.color = color
@@ -13,26 +13,26 @@
   }
   ////Lane1 Cars
 
-  let car1 = new Car(1, 1, 1, 1, 'red', -1)
-  let car2 = new Car(1.5, 1, 2, 1, 'red', -1)
-  let car3 = new Car(2, 1, 1, 1, 'red', -1)
+  let car1 = new Car(1, 2, 1, 1, 'red', -1)
+  let car2 = new Car(1.5, 2, 2, 1, 'red', -1)
+  let car3 = new Car(2, 2, 1, 1, 'red', -1)
   ///lane2 Cars
-  let car4 = new Car(1, .95, 1, 1, 'blue', 2)
-  let car5 = new Car(1.5, .95, 1, 1, 'blue', 2)
-  let car6 = new Car(2, .95, 1, 1, 'blue', 2)
+  let car4 = new Car(1, 3, 1, 1, 'blue', 2)
+  let car5 = new Car(1.5, 3, 1, 1, 'blue', 2)
+  let car6 = new Car(2, 3, 1, 1, 'blue', 2)
   ///lane3 cars
-  let car7 = new Car(1, .9, 1, 1, 'green', -2)
-  let car8 = new Car(1.5, .9, 2, 1, 'green', -2)
-  let car9 = new Car(2, .9, 3, 1, 'green', -2)
-  let abc779 = new Car(2.5, .9, 3, 1, 'green', -2)
+  let car7 = new Car(1, 4, 1, 1, 'green', -2)
+  let car8 = new Car(1.5, 4, 2, 1, 'green', -2)
+  let car9 = new Car(2, 4, 3, 1, 'green', -2)
+  let abc779 = new Car(2.5, 4, 3, 1, 'green', -2)
    ///lane4 cars
-  let car10 = new Car(1, .85, 1, 1, 'yellow',3)
-  let car11 = new Car(1.5, .85, 3, 1, 'yellow', 3)
-  let car12 = new Car(2, .85, 1, 1, 'yellow', 3)
+  let car10 = new Car(1, 5, 1, 1, 'yellow',3)
+  let car11 = new Car(1.5, 5, 3, 1, 'yellow', 3)
+  let car12 = new Car(2, 5, 1, 1, 'yellow', 3)
    ///hov cars
-  let car13 = new Car(1, .8, 1, 1, 'orange', -5)
-  let car14 = new Car(1.5, .8, 1, 1, 'orange', -5)
-  let car15 = new Car(3, .8, 5, 1, 'orange', -5)
+  let car13 = new Car(1, 1, 1, 1, 'orange', -5)
+  let car14 = new Car(1.5, 1, 1, 1, 'orange', -5)
+  let car15 = new Car(3, 1, 5, 1, 'orange', -5)
   
   let lane1 = [car1, car2, car3]
   let lane2 = [car4, car5, car6]
