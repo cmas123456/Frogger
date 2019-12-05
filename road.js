@@ -1,13 +1,3 @@
-// road.forEach(lane => {
-//   lane.forEach(car => {
-         
-  const canvas = document.getElementById('sandbox')
-  canvas.width = window.screen.width
-  canvas.height = window.screen.height
-  const ctx = canvas.getContext('2d');
-  //ctx.scale(2, 2)
-  //origin: [window.innerWidth / 2, window.innerHeight * .935],
-  //dimensions: [window.innerWidth / 40, window.innerHeight / 20],
   function Car(x, y, h, w, color, speed){
     this.x = (window.innerWidth / 2) * x
     this.y = (window.innerHeight * .935) * y
@@ -17,11 +7,9 @@
     this.speed = speed
     
     this.renderCar = function(){
-      
-      ctx.fillStyle = this.color
-      ctx.fillRect(this.x, this.y, this.h, this.w)
-    }
-    
+      context.fillStyle = this.color
+      context.fillRect(this.x, this.y, this.h, this.w)
+    } 
   }
   ////Lane1 Cars
 
@@ -55,8 +43,8 @@
  
   
   function goZoom () {
-    road.forEach(lane =>   lane.forEach(car => {
-      
+    road.forEach(lane => 
+      lane.forEach(car => {
       if(car.speed < 1){
           if(car.x > -300)//800 is the end point
          {car.x += car.speed}//1 is the speed
@@ -73,7 +61,7 @@
         car.x = -50//-50 is respawn point
       }
          }
-      
+      car.renderCar();
       
       
       
@@ -81,15 +69,5 @@
     }))
   
   }
-  
-      function doStuff(){
-          
-           ctx.clearRect(0,0,canvas.width,canvas.height) 
-           road.forEach(lane => lane.forEach(element => element.renderCar()) )
 
-           goZoom()
-           
-           window.requestAnimationFrame(doStuff)
-          }
-     doStuff()
        

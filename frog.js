@@ -16,6 +16,7 @@ let frogCreate = (() => {
         attachedSpeed: 0,
         canHop: true,
         hopCounter: 0,
+        isSafe: true,
         image: frogImageUp,
         Draw() {
             context.drawImage(this.image, this.origin[0],this.origin[1],this.dimensions[0],this.dimensions[1]);
@@ -31,9 +32,9 @@ let frogCreate = (() => {
                         this.origin[1] += this.verticalSpeed;
                         this.hopCounter = 0;
                     }
-                    if (frog.attachedSpeed > 0){
-                        frog.origin[0] += frog.attachedSpeed;
-                    } 
+                    // if (frog.attachedSpeed > 0){
+                    //     frog.origin[0] += frog.attachedSpeed;
+                    // } 
                 }
             } else {
                 this.hopCounter++; 
@@ -46,7 +47,7 @@ let frogCreate = (() => {
             }    
         },
         CheckBorderX() {
-            if (this.origin[0]< 0 || this.origin[0] + this.horizontalSpeed > window.innerWidth - 25){
+            if (this.origin[0] + frog.dimensions[0] + this.horizontalSpeed < 0 || this.origin[0] + this.horizontalSpeed > window.innerWidth - 25){
                 return true;
             }
             else {
@@ -101,19 +102,3 @@ let InputHandler = (() => {
       }
     })
   })();
-// function isOnLog () {
-//       isSafe = true;
-//       let topOfObject = frog.origin[1];
-//       let bottomOfObject = frog.origin[1] + frog.dimensions[1];
-//       let leftSideOfObject = frog.origin[0];
-//       let rightSideOfObject = frog.origin[0] + frog.dimensions[0];
-//       logArray.forEach(row => {
-//           row.forEach(log => {
-//             if ((topOfObject < log.topOfObject) && (bottomOfObject > log.bottomOfObject)) {
-//                 if ((leftSideOfObject > log.leftSideOfObject) && (rightSideOfObject < log.rightSideOfObject)) {
-//                     frog.origin[0] += log.speed;
-//                 }
-//             }
-//           })
-//       })
-// }
