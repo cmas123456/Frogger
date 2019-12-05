@@ -11,7 +11,7 @@ function drawSplat() {
 function frogSplatted () {
     splatted = {
         origin: [frog.origin[0], frog.origin[1]],
-        dimensions: [window.innerWidth / 40, window.innerHeight / 20],
+        dimensions: [window.innerWidth / 25, window.innerHeight / 20],
         image: img_frogsplat,
         Draw() {
             context.drawImage(this.image, this.origin[0], this.origin[1],this.dimensions[0], this.dimensions[1]);

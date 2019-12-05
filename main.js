@@ -23,6 +23,40 @@ function drawBackground() {// draws the background on the canvas
   }
   water.Draw();// only background that should make it to the game unless the above is converted to road
 }
+function drawBay() {
+  bayArea.forEach(bay => {
+    bay.Draw();
+  })
+}
+function isGameOver() {
+  if (frog.lives <= 0) {
+    context.rect(0, 0, window.innerWidth, window.innerHeight);
+      context.fillStyle = "rgba(0,0,0,0.5)";
+      context.fill();
+      context.font = "30px Helvetica";
+      context.fillStyle = "white";
+      context.textAlign = "center";
+      context.fillText("GAME OVER", window.innerWidth / 2, window.innerHeight / 2);
+  }
+  else {
+    let counter = 0;
+    for (let i = 0; i < bayArea.length; i++){
+      if (!bayArea[i].isSafe){
+        counter++;
+      }
+      if (counter === bayArea.length) {
+        context.rect(0, 0, window.innerWidth, window.innerHeight);
+        context.fillStyle = "rgba(0,0,0,0.5)";
+        context.fill();
+
+        context.font = "30px Helvetica";
+        context.fillStyle = "white";
+        context.textAlign = "center";
+        context.fillText("VICTORY", window.innerWidth / 2, window.innerHeight / 2);
+      }
+    }
+  }
+}
 function isOnLog () {
   let topOfObject = frog.origin[1];
   let bottomOfObject = frog.origin[1] + frog.dimensions[1];
@@ -66,6 +100,55 @@ function isOnLog () {
         }
       }
     }
+  })
+}
+let bayArea = [];
+let createBays = (() => {
+  for (let i = 1; i < 6; i ++){
+      bay = {
+          origin: [window.innerWidth * (.18 * i) - (window.innerWidth * .12), 0],
+          dimensions: [window.innerWidth * .15, window.innerHeight / 12],
+          isSafe: true,
+          image: img_bay,
+          Draw () {
+            if (this.isSafe){
+              this.image = img_bay;
+            } else {
+              this.image = img_businessfrog;
+            }
+            context.drawImage(this.image, this.origin[0], this.origin[1], this.dimensions[0], this.dimensions[1]);
+          }
+      }
+      bayArea.push(bay);
+  }
+})();
+function bayLanding() {
+  let leftSideOfObject = frog.origin[0];
+  let rightSideOfObject = frog.origin[0] + frog.dimensions[0];
+  let frogLane = frog.origin[1];
+  bayArea.forEach(bay => {
+    let bayLeft = bay.origin[0];
+    let bayRight = bay.origin[0] + bay.dimensions[0];
+    let bayLane = bay.origin[1] + bay.dimensions[1];
+    if (frogLane <= bayLane) {
+      if (!bay.isSafe) {
+        frog.lives--;
+        frog.origin[0] = window.innerWidth / 2;
+        frog.origin[1] = window.innerHeight * .935;
+      }
+      else if (leftSideOfObject >= bayLeft && leftSideOfObject <= bayRight){
+        frog.lives++;
+        frog.origin[0] = window.innerWidth / 2;
+        frog.origin[1] = window.innerHeight * .935;
+        bay.isSafe = false;
+      }
+      else if (rightSideOfObject <= bayLeft && rightSideOfObject >= bayRight){
+        frog.lives++;
+        frog.origin[0] = window.innerWidth / 2;
+        frog.origin[1] = window.innerHeight * .935;
+        bay.isSafe = false;
+        } 
+      }
   })
 }
 function goSplat() {
@@ -154,7 +237,9 @@ function isOnTurtle() {
 }
 function drawObjects () {
     drawBackground();
+    drawBay();
     drawSplat();
+    bayLanding();
     logRow1.forEach(wood =>{
       wood.Animate();});
     logRow2.forEach(wood =>{
@@ -175,6 +260,7 @@ function gameLoop() {
     isOnLog();
     isOnTurtle();
     whysoDrown();
+    isGameOver();
     window.requestAnimationFrame(gameLoop);
 }
 gameLoop();
