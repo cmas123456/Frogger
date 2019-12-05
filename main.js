@@ -9,7 +9,16 @@ assignAttributes(source, { // this makes the canvas fit in the window
 })
 document.body.appendChild(source) // adds the canvas to the webpage
 const context = source.getContext('2d', {alpha: 'false'})
-
+function roadLines(){
+  context.strokeStyle = 'yellow';
+  for(let i = 7; i < 12; i++){
+    context.beginPath();
+    context.setLineDash([window.innerWidth/48,window.innerWidth/48]);
+    context.moveTo(0, (window.innerHeight / 12) *i);
+    context.lineTo(window.innerWidth, (window.innerHeight / 12) *i);
+    context.stroke();
+  }
+}
 function drawBackground() {// draws the background on the canvas
   context.clearRect(0, 0, window.innerWidth, window.innerHeight);
   for (let i = 0; i < 12; i++){
@@ -21,6 +30,7 @@ function drawBackground() {// draws the background on the canvas
     }
     context.fillRect(0, (window.innerHeight / 12) * i, window.innerWidth, window.innerHeight);
   }
+  roadLines();
   water.Draw();
 }
 function isOnLog () {
