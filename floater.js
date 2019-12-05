@@ -54,7 +54,7 @@ class turtle{
         this.image = null,
         this.safe = true,
         this.counter = 0,
-        this.diveSpeed = 1,
+        this.diveSpeed = 2,
         this.diverTurt = diverTurt
     }
     Draw() {
@@ -75,18 +75,18 @@ class turtle{
         if(this.diverTurt){
             if( this.counter < 200){
                 this.color = 'olive';
-                if(this.counter < 0){this.diveSpeed = 1;}
+                if(this.counter < 0){this.diveSpeed = 2;} // don't forget this if you change default dive speed.
             } else if(this.counter === 200){
                 this.color = 'rgba(128,128,0, .75)'; 
-            } else if(this.counter === 400){
+            } else if(this.counter === 300){
                 this.color = 'rgba(128,128,0, .50)';
-            } else if(this.counter === 600){
+            } else if(this.counter === 400){
                 this.color = 'rgba(128,128,0, .25)';
                 this.safe = true;
-            } else if(this.counter === 800){
+            } else if(this.counter === 500){
                 this.color = 'rgba(128,128,0, 0)';
                 this.safe = false;
-            }else if(this.counter === 900){
+            }else if(this.counter === 550){
                 this.diveSpeed =-2;
             }
         }
