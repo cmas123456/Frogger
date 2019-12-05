@@ -19,7 +19,6 @@ class wood {
         this.speed = speed,
         this.color = 'peru',
         this.image = null,
-        this.safe = true,
         this.leftSideOfObject = this.origin[0];
         this.rightSideOfObject = this.origin[0] + this.dimensions[0];
         this.topOfObject = this.origin[1];
@@ -60,24 +59,14 @@ class turtle{
     }
     Draw() {
         let offset = 0;
-        context.fillStyle = this.color;
-        context.beginPath();
-        context.arc(this.origin[0] + offset, this.origin[1],this.radius, 0, 2 * Math.PI, false);
-        context.fill();
+        this.Circle(offset);
         if(this.turtPop > 1){
             offset = 2*(this.radius);
-            context.fillStyle = this.color;
-            
-            context.beginPath();
-            context.arc(this.origin[0] + offset, this.origin[1],this.radius, 0, 2 * Math.PI, false);
-            context.fill();
+            this.Circle(offset);
         }
         if(this.turtPop > 2){
             offset = 4*(this.radius);
-            context.fillStyle = this.color;
-            context.beginPath();
-            context.arc(this.origin[0] + offset, this.origin[1],this.radius, 0, 2 * Math.PI, false);
-            context.fill();
+            this.Circle(offset);
         }
     }
     Animate(){
@@ -105,6 +94,12 @@ class turtle{
         if (this.origin[0] < 0 - (2 * this.radius * 3)){
             this.origin[0] = window.innerWidth + this.radius;
         }
+    }
+    Circle(offset){
+        context.fillStyle = this.color;
+        context.beginPath();
+        context.arc(this.origin[0] + offset, this.origin[1],this.radius, 0, 2 * Math.PI, false);
+        context.fill();
     }
 };
 let turtleRow1 = []; row1 = 3/12; row1Speed = 2;
