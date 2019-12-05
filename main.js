@@ -70,7 +70,6 @@ function isOnLog () {
 }
 function goSplat() {
   let topOfObject = frog.origin[1];
-  let bottomOfObject = frog.origin[1] + frog.dimensions[1];
   let leftSideOfObject = frog.origin[0];
   let rightSideOfObject = frog.origin[0] + frog.dimensions[0];
   road.forEach(lane => {
@@ -99,6 +98,15 @@ function goSplat() {
       // }
     })
   })
+}
+function whysoDrown(){
+  if ((frog.origin[1] <= water.origin[1] + water.dimensions[1]) && (frog.origin[1] > water.origin[1])){
+    if (frog.attachedSpeed === 0) {
+      frog.lives--;
+      frog.origin[0] = window.innerWidth / 2;
+      frog.origin[1] = frog.origin[1] = window.innerHeight * .935;
+    }
+  }
 }
 function isOnTurtle() {
   let topOfObject = frog.origin[1];
@@ -169,6 +177,7 @@ function gameLoop() {
     goSplat();
     isOnLog();
     isOnTurtle();
+    whysoDrown();
     window.requestAnimationFrame(gameLoop);
 }
 gameLoop();
