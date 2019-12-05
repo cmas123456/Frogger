@@ -97,6 +97,7 @@ function goSplat() {
 function whysoDrown(){
   if ((frog.origin[1] <= water.origin[1] + water.dimensions[1]) && (frog.origin[1] > water.origin[1])){
     if (frog.attachedSpeed === 0) {
+      frogDrown();
       frog.lives--;
       frog.origin[0] = window.innerWidth / 2;
       frog.origin[1] = frog.origin[1] = window.innerHeight * .935;
@@ -121,6 +122,7 @@ function isOnTurtle() {
           }
         }
         if (!turtle.safe){
+          frogTurtled();
           frog.lives--;
           frog.origin[0] = window.innerWidth / 2;
           frog.origin[1] = window.innerHeight * .935;
@@ -141,6 +143,7 @@ function isOnTurtle() {
           }
         }
         if (!turtle.safe){
+          frogTurtled();
           frog.lives--;
           frog.origin[0] = window.innerWidth / 2;
           frog.origin[1] = window.innerHeight * .935;
