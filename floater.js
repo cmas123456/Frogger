@@ -34,15 +34,15 @@ class wood {
         this.origin[0] += this.speed;
         this.Draw();
         if (this.origin[0] > window.innerWidth){
-            this.origin[0] = -this.dimensions[0];
+            this.origin[0] = -window.innerWidth * .5; // this must set every log back to the - length of the longest log or you get overlap
         }
     }
 };
-let logRow1 = []; row1 = 1/12; row1Speed = 4;
-let logRow2 = []; row2 = 2/12;
-let logRow3 = []; row3 = 4/12; row3Speed = 3;
-logRow1.push(new wood(0,row1,.1,4),new wood(.25,row1 ,.3,4),new wood(.75, row1, .15,4));
-logRow2.push(new wood(0,row2,.50),new wood(.75,row2 ,.1));//,new wood(.75, row2, .15));
+let logRow1 = []; row1 = 1/12; row1Speed = 3;
+let logRow2 = []; row2 = 2/12; row2Speed = 1;
+let logRow3 = []; row3 = 4/12; row3Speed = 2;
+logRow1.push(new wood(0,row1,.1,row1Speed),new wood(.25,row1 ,.3,row1Speed),new wood(.75, row1, .15,row1Speed));
+logRow2.push(new wood(0,row2,.50,row2Speed),new wood(.75,row2 ,.1,row2Speed));
 logRow3.push(new wood(0,row3, .15,row3Speed),new wood(.25,row3 ,.20,row3Speed),new wood(.65, row3, .20,row3Speed),new wood(.90, row3, .10,row3Speed));
 class turtle{
     constructor(startX = 0, startY = 1/12, turtPop = 2, speed = 2, diverTurt = false){
