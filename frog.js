@@ -2,6 +2,23 @@ const frogImageUp = document.getElementById('img_frogup');
 const frogImageDown = document.getElementById('img_frogdown');
 const frogImageLeft = document.getElementById('img_frogleft');
 const frogImageRight = document.getElementById('img_frogright');
+let frogSplat = [];
+function drawSplat() {
+    frogSplat.forEach(frog => {
+        frog.Draw();
+    })
+}
+function frogSplatted () {
+    splatted = {
+        origin: [frog.origin[0], frog.origin[1]],
+        dimensions: [window.innerWidth / 40, window.innerHeight / 20],
+        image: img_frogsplat,
+        Draw() {
+            context.drawImage(this.image, this.origin[0], this.origin[1],this.dimensions[0], this.dimensions[1]);
+        }
+    }
+    frogSplat.push(splatted);
+}
 let frog = {};
 let frogCreate = (() => {
     frog = {

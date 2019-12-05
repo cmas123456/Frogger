@@ -79,23 +79,18 @@ function goSplat() {
       let carAxis = car.y;
       if (carAxis === topOfObject){
         if (leftSideOfObject >= carLeft && leftSideOfObject <= carRight){
+          frogSplatted();
           frog.lives--;
           frog.origin[0] = window.innerWidth / 2;
           frog.origin[1] = window.innerHeight * .935;
         }
         else if(rightSideOfObject <= carLeft && rightSideOfObject >= carRight){
+          frogSplatted();
           frog.lives--;
           frog.origin[0] = window.innerWidth / 2;
           frog.origin[1] = window.innerHeight * .935;
         }
       }
-      // if ((topOfObject > carAxis) && (bottomOfObject < carDown)) {
-      //   if ((leftSideOfObject > carLeft) || (rightSideOfObject < carRight)) {
-      //     frog.lives--;
-      //     frog.origin[0] = window.innerWidth / 2;
-      //     frog.origin[1] = window.innerHeight * .935;
-      //   }
-      // }
     })
   })
 }
@@ -154,10 +149,9 @@ function isOnTurtle() {
     }
   })
 }
-
-
 function drawObjects () {
     drawBackground();
+    drawSplat();
     logRow1.forEach(wood =>{
       wood.Animate();});
     logRow2.forEach(wood =>{
