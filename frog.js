@@ -19,6 +19,28 @@ function frogSplatted () {
     }
     frogSplat.push(splatted);
 }
+function frogDrown() {
+    splatted = {
+        origin: [frog.origin[0], frog.origin[1]],
+        dimensions: [window.innerWidth / 40, window.innerHeight / 20],
+        image: img_drowning,
+        Draw() {
+            context.drawImage(this.image, this.origin[0], this.origin[1],this.dimensions[0], this.dimensions[1]);
+        }
+    }
+    frogSplat.push(splatted);
+}
+function frogTurtled() {
+    splatted = {
+        origin: [frog.origin[0], frog.origin[1]],
+        dimensions: [window.innerWidth / 40, window.innerHeight / 20],
+        image: img_turtles,
+        Draw() {
+            context.drawImage(this.image, this.origin[0], this.origin[1],this.dimensions[0] + window.innerWidth * .03, this.dimensions[1]);
+        }
+    }
+    frogSplat.push(splatted);
+}
 let frog = {};
 let frogCreate = (() => {
     frog = {
