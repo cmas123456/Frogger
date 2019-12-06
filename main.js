@@ -9,8 +9,14 @@ assignAttributes(source, { // this makes the canvas fit in the window
 })
 document.body.appendChild(source) // adds the canvas to the webpage
 const context = source.getContext('2d', {alpha: 'false'})
-
-
+function lifeCount(){
+  context.font = "15px Helvetica";
+  context.fillStyle = "white";
+  context.textAlign = "center";
+  context.fillText("Lives:", 40, 15);
+  context.font = "20px Helvetica";
+  context.fillText(`${frog.lives}`,40, 40);
+}
 function roadLines(){
   context.strokeStyle = 'yellow';
   for(let i = 7; i < 12; i++){
@@ -237,6 +243,7 @@ function gameLoop() {
     isOnLog();
     isOnTurtle();
     whysoDrown();
+    lifeCount();
     isGameOver();
     window.requestAnimationFrame(gameLoop);
 }
