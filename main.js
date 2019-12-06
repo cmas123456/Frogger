@@ -13,9 +13,9 @@ function lifeCount(){
   context.font = "15px Helvetica";
   context.fillStyle = "white";
   context.textAlign = "center";
-  context.fillText("Lives:", 40, 15);
+  context.fillText("Lives:", window.innerWidth * .03, window.innerHeight *.03);
   context.font = "20px Helvetica";
-  context.fillText(`${frog.lives}`,40, 40);
+  context.fillText(`${frog.lives}`, window.innerWidth * .03, window.innerHeight *.07);
 }
 function roadLines(){
   context.strokeStyle = 'yellow';
