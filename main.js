@@ -22,7 +22,10 @@ function roadLines(){
 function drawBackground() {// draws the background on the canvas
   context.clearRect(0, 0, window.innerWidth, window.innerHeight);
   for (let i = 0; i < 12; i++){
-    if ((i % 2) === 0){
+    if(i === 0){
+      context.fillStyle = 'darkgreen';
+    }
+    else if ((i % 2) === 0){
       context.fillStyle = 'darkslategrey';
     }
     else if ((i % 2) !== 0){
