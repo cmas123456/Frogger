@@ -9,6 +9,10 @@ assignAttributes(source, { // this makes the canvas fit in the window
 })
 document.body.appendChild(source) // adds the canvas to the webpage
 const context = source.getContext('2d', {alpha: 'false'})
+const audio1 = document.getElementById('sound');
+var audio = new Audio(audio1);
+
+
 function roadLines(){
   context.strokeStyle = 'yellow';
   for(let i = 7; i < 12; i++){
@@ -235,4 +239,5 @@ function gameLoop() {
     isGameOver();
     window.requestAnimationFrame(gameLoop);
 }
+audio.play();
 gameLoop();
