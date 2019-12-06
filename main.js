@@ -117,24 +117,31 @@ function bayLanding() {
     let bayRight = bay.origin[0] + bay.dimensions[0];
     let bayLane = bay.origin[1] + bay.dimensions[1];
     if (frogLane <= bayLane) {
-      if (!bay.isSafe) {
-        frog.lives--;
-        frog.origin[0] = window.innerWidth / 2;
-        frog.origin[1] = window.innerHeight * .935;
-      }
-      else if (leftSideOfObject >= bayLeft && leftSideOfObject <= bayRight){
-        frog.lives++;
-        frog.origin[0] = window.innerWidth / 2;
-        frog.origin[1] = window.innerHeight * .935;
-        bay.isSafe = false;
+      if (leftSideOfObject >= bayLeft && leftSideOfObject <= bayRight){
+        if (bay.isSafe) {
+          frog.origin[0] = window.innerWidth / 2;
+          frog.origin[1] = window.innerHeight * .935;
+          bay.isSafe = false;
+        } 
+        else if (!bay.isSafe) {
+          frog.lives--;
+          frog.origin[0] = window.innerWidth / 2;
+          frog.origin[1] = window.innerHeight * .935;
+        }
       }
       else if (rightSideOfObject <= bayLeft && rightSideOfObject >= bayRight){
-        frog.lives++;
-        frog.origin[0] = window.innerWidth / 2;
-        frog.origin[1] = window.innerHeight * .935;
-        bay.isSafe = false;
+        if (bay.isSafe) {
+          frog.origin[0] = window.innerWidth / 2;
+          frog.origin[1] = window.innerHeight * .935;
+          bay.isSafe = false;
         } 
-      }
+        else if (!bay.isSafe) {
+          frog.lives--;
+          frog.origin[0] = window.innerWidth / 2;
+          frog.origin[1] = window.innerHeight * .935;
+        }
+      } 
+    }
   })
 }
 function goSplat() {
